@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Camaritas</title>
+<style>
+/* ---------- FONDO DEGRADADO ANIMADO ---------- */
+body {
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    background: linear-gradient(270deg, #58a6ee, #ff7f50);
+    background-size: 600% 600%;
+    animation: gradient 15s ease infinite;
+    color: #fff;
+}
+
+@keyframes gradient {
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* ---------- TÍTULO ---------- */
+header {
+    padding: 10px 0;
+    text-align: center;
+}
+
+.titulo {
+    font-size: 65px;
+    font-weight: bold;
+    color: #09ff78;
+}
+
+.titulo span {
+    display: inline-block;
+    animation: circulo 8s linear infinite;
+}
+
+.titulo span:nth-child(1) { animation-delay: 0s; }
+.titulo span:nth-child(2) { animation-delay: -1s; }
+.titulo span:nth-child(3) { animation-delay: -2s; }
+.titulo span:nth-child(4) { animation-delay: -3s; }
+.titulo span:nth-child(5) { animation-delay: -4s; }
+.titulo span:nth-child(6) { animation-delay: -5s; }
+.titulo span:nth-child(7) { animation-delay: -6s; }
+.titulo span:nth-child(8) { animation-delay: -7s; }
+.titulo span:nth-child(9) { animation-delay: -8s; }
+
+@keyframes circulo {
+    from {transform: rotate(0deg) translateX(6px) rotate(0deg);}
+    to {transform: rotate(-360deg) translateX(6px) rotate(360deg);}
+}
+
+/* ---------- MARQUEE ---------- */
+.marquee {
+    color: white;
+}
+
+/* ---------- GALERÍA ---------- */
+.galeria {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.item {
+    text-align: center;
+}
+
+.item img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.item p {
+    margin-top: 8px;
+    font-size: 15px;
+    letter-spacing: 1px;
+    color: #09ff78;
+}
+
+/* Botón de compra debajo del texto */
+.item a.button {
+    display: block;
+    margin-top: 8px;
+    background: #ff7f50;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-align: center;
+}
+
+.item a.button:hover {
+    background: #ff5722;
+}
+
+/* ---------- PANEL LATERAL ---------- */
+.panel-bg {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 9000;
+}
+
+.panel-bg.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 340px;
+    height: 100%;
+    background: #111;
+    padding: 20px;
+    transform: translateX(-100%);
+    transition: transform 0.35s ease;
+    z-index: 9001;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.4);
+}
+
+.panel.active {
+    transform: translateX(0);
+}
+
+.panel img {
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.panel h2 {
+    margin: 0 0 8px;
+    color: #09ff78;
+}
+
+.panel p {
+    margin-bottom: 15px;
+}
+
+.panel .cerrar {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    color: #09ff78;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+
+/* RESPONSIVO */
+@media (max-width: 1100px) { .galeria { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .galeria { grid-template-columns: 1fr; } }
+@media (max-width: 1024px) { .titulo { font-size: 80px; } .item p { font-size: 18px; } .marquee { font-size: 24px; } }
+@media (max-width: 600px) { .titulo { font-size: 90px; } .item p { font-size: 22px; } .marquee { font-size: 28px; } }
+</style>
+</head>
+<body>
+
+<div class="marquee">
+<marquee behavior="scroll" direction="left">oferta navideña - oferta navideña - oferta navideña - oferta navideña</marquee>
+</div>
+
+<header>
+    <h1 class="titulo">
+        <span>C</span><span>a</span><span>m</span><span>a</span><span>r</span><span>i</span><span>t</span><span>a</span><span>s</span>
+    </h1>
+</header>
+
+<section class="galeria">
+    <div class="item">
+        <img src="P0.jpg"
+     class="abrir-panel"
+     data-titulo="Yashica Patio"
+     data-precio="Tipo: cámara compacta analógica de 35 mm · Lente: Yashica 35 mm · Enfoque: automático · Película: rollo 35 mm · Funciones: enfoque automático, exposición automática y flash integrado"
+     
+     data-link="#">
+
+        <p>Yashica Patio – <mark>70.000 Disponible</mark></p>
+        <a class="button" href="#">Comprar</a>
+    </div>
+
+    <div class="item">
+        <img src="2.jpg" alt="">
+        <p>Canon Prima BF800 – <s>70.000</s>  Vendida</p>
+        
+    </div>
+
+    <div class="item">
+        <img src="3.jpg" alt="">
+        <p>Olympus Trip 505 – <s>65.000</s> Vendida</p>
+    </div>
+    <div class="item">
+        <img src="4.jpg" alt="">
+        <p>Olympus Stylus Epic 115 dlx – Vendida</p>
+    </div>
+    <div class="item">
+        <img src="5.jpg" alt="">
+        <p>Olympus Infinity Zoom70 – Vendida</p>
+    </div>
+    <div class="item">
+        <img src="6.jpg" alt="">
+        <p>Pentax Espio 738 – Vendida</p>
+    </div>
+    <div class="item">
+        <img src="8.jpg" alt="">
+        <p>Olympus Trip 301 – Vendida</p>
+    </div>
+    <div class="item">
+        <img src="9.jpg" alt="">
+        <p>Olympus Stylus – Vendida</p>
+    </div>
+    <div class="item">
+        <img src="1.jpg" alt="">
+        <p>Canon Prima Zoom76 – Vendida</p>
+    </div>
+</section>
+
+<!-- Panel lateral -->
+<div class="panel-bg" id="panelBg"></div>
+
+<aside class="panel" id="panel">
+    <button class="cerrar" id="cerrarPanel">←</button>
+    <img id="panelImg" src="" alt="">
+    <h2 id="panelTitulo"></h2>
+    <p id="panelPrecio"></p>
+    <a id="panelLink" class="button" href="#" target="_blank">Comprar</a>
+</aside>
+<script>
+const panel = document.getElementById('panel');
+const panelBg = document.getElementById('panelBg');
+const cerrar = document.getElementById('cerrarPanel');
+
+const panelImg = document.getElementById('panelImg');
+const panelTitulo = document.getElementById('panelTitulo');
+const panelPrecio = document.getElementById('panelPrecio');
+const panelLink = document.getElementById('panelLink');
+
+document.querySelectorAll('.abrir-panel').forEach(img => {
+    img.addEventListener('click', () => {
+        panelImg.src = img.src;
+        panelTitulo.textContent = img.dataset.titulo;
+        panelPrecio.textContent = img.dataset.precio;
+        panelLink.href = img.dataset.link;
+
+        panel.classList.add('active');
+        panelBg.classList.add('active');
+    });
+});
+
+function cerrarPanel() {
+    panel.classList.remove('active');
+    panelBg.classList.remove('active');
+}
+
+panelBg.addEventListener('click', cerrarPanel);
+cerrar.addEventListener('click', cerrarPanel);
+</script>
+
+
+</body>
+</html>
